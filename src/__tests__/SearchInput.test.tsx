@@ -8,7 +8,7 @@ test("updates search field on user input", () => {
 
   render(<SearchInput onSearch={mockOnSearch} />);
 
-  const input = screen.getByPlaceholderText("Search for games...") as HTMLInputElement;
+  const input = screen.getByPlaceholderText("Search games...") as HTMLInputElement;
   fireEvent.change(input, { target: { value: "Halo" } });
 
   expect(input.value).toBe("Halo");
