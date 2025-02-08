@@ -1,0 +1,3 @@
+[submodule "game-hub"]
+	path = game-hub
+	url = https://github.com/btarrant/game-hub.git
