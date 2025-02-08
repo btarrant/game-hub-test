@@ -1,6 +1,6 @@
 # Automated Testing Framework for Game Hub
 
-I'm creating a comprehensive automated testing framework for the **Game Hub** application. The Game Hub app is a modern React-based web application built with TypeScript and Vite that aggregates video game information via the Rawg.io API and delivers a responsive, visually appealing interface using Chakra UI.
+I've created a comprehensive automated testing framework for the **Game Hub** application. The Game Hub app is a modern React-based web application built with TypeScript and Vite that aggregates video game information via the Rawg.io API and delivers a responsive, visually appealing interface using Chakra UI.
 
 ## Testing Overview
 
