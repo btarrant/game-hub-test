@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import SearchInput from "../../game-hub/src/components/SearchInput";
+import SearchInput from "../../../game-hub/src/components/SearchInput";
 import { jest } from '@jest/globals';
 import React from "react";
 

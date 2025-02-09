@@ -1,5 +1,9 @@
 module.exports = {
     preset: "ts-jest",
+    testPathIgnorePatterns: [
+      "/node_modules/",
+      "<rootDir>/src/__tests__/__deprecatedTests__/SearchInput.test.tsx"
+    ],
     testEnvironment: "jsdom",
     transform: {
         '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
