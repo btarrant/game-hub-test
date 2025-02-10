@@ -1,7 +1,7 @@
-import { act } from "react"; 
 import useData from "../../game-hub/src/hooks/useData";
 import { renderHook, waitFor } from "@testing-library/react";
 import apiClient from "../../game-hub/src/services/api-client";
+import { CanceledError } from "axios";
 
 jest.mock("../../game-hub/src/services/api-client", () => ({
     get: jest.fn(),
@@ -78,16 +78,16 @@ describe("useData Hook API Tests", () => {
       expect(result.current.error).toBe("Rate Limited");
     });
 
-//   // ✅ Test 7: Handles Canceled Requests (Unmounting)
-//   it("should prevent state updates if request is canceled", async () => {
-//     const cancelError = new CanceledError("Request canceled");
-//     mockedApiClient.get.mockRejectedValue(cancelError);
+    // ✅ Test 7: Handles Canceled Requests (Unmounting)
+    it("should prevent state updates if request is canceled", async () => {
+      const cancelError = new CanceledError("Request canceled");
+      mockedApiClient.get.mockRejectedValue(cancelError);
 
-//     const { result, unmount } = renderHook(() => useData(mockEndpoint));
-//     unmount();
+      const { result, unmount } = renderHook(() => useData(mockEndpoint));
+      unmount();
 
-//     expect(result.current.data).toEqual([]);
-//   });
+      expect(result.current.data).toEqual([]);
+    });
 
 //   // ✅ Test 8: Handles Empty API Response
 //   it("should return an empty array when API response is empty", async () => {
