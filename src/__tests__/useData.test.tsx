@@ -28,15 +28,15 @@ describe("useData Hook API Tests", () => {
         });
     });
 
-  // ✅ Test 2: Handles API timeout
-  it("should handle API timeout errors", async () => {
-    mockedApiClient.get.mockRejectedValue(new Error("Timeout Error"));
+    // ✅ Test 2: Handles API timeout
+    it("should handle API timeout errors", async () => {
+        mockedApiClient.get.mockRejectedValue(new Error("Timeout Error"));
 
-    const { result } = renderHook(() => useData(mockEndpoint));
-    await waitFor(() => expect(result.current.isLoading).toBe(false));
+        const { result } = renderHook(() => useData(mockEndpoint));
+        await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-    expect(result.current.error).toBe("Timeout Error");
-  });
+        expect(result.current.error).toBe("Timeout Error");
+    });
 
 //   // ✅ Test 3: Handles 404 Not Found
 //   it("should handle 404 Not Found errors", async () => {
