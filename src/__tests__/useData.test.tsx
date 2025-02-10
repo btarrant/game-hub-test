@@ -38,15 +38,15 @@ describe("useData Hook API Tests", () => {
         expect(result.current.error).toBe("Timeout Error");
     });
 
-//   // ✅ Test 3: Handles 404 Not Found
-//   it("should handle 404 Not Found errors", async () => {
-//     mockedAxios.get.mockRejectedValue({ response: { status: 404, data: { message: "Not Found" } } });
+    // ✅ Test 3: Handles 404 Not Found
+    it("should handle 404 Not Found errors", async () => {
+      mockedApiClient.get.mockRejectedValue({ response: { status: 404, data: { message: "Not Found" } } });
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.error).toBe("Not Found");
-//   });
+      expect(result.current.error).toBe("Not Found");
+    });
 
 //   // ✅ Test 4: Handles 500 Internal Server Error
 //   it("should handle 500 Internal Server Error", async () => {
