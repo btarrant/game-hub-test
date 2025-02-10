@@ -48,19 +48,19 @@ describe("useData Hook API Tests", () => {
       expect(result.current.error).toBe("Not Found");
     });
 
-//   // ✅ Test 4: Handles 500 Internal Server Error
-//   it("should handle 500 Internal Server Error", async () => {
-//     mockedAxios.get.mockRejectedValue({ response: { status: 500, data: { message: "Server Error" } } });
+    // ✅ Test 4: Handles 500 Internal Server Error
+    it("should handle 500 Internal Server Error", async () => {
+      mockedApiClient.get.mockRejectedValue({ response: { status: 500, data: { message: "Server Error" } } });
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.error).toBe("Server Error");
-//   });
+      expect(result.current.error).toBe("Server Error");
+    });
 
 //   // ✅ Test 5: Handles 401 Unauthorized
 //   it("should handle 401 Unauthorized errors", async () => {
-//     mockedAxios.get.mockRejectedValue({ response: { status: 401, data: { message: "Unauthorized" } } });
+//     mockedApiClient.get.mockRejectedValue({ response: { status: 401, data: { message: "Unauthorized" } } });
 
 //     const { result } = renderHook(() => useData(mockEndpoint));
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -70,7 +70,7 @@ describe("useData Hook API Tests", () => {
 
 //   // ✅ Test 6: Handles 429 Rate Limiting (without retries)
 //   it("should handle 429 Too Many Requests errors", async () => {
-//     mockedAxios.get.mockRejectedValue({ response: { status: 429, data: { message: "Rate Limited" } } });
+//     mockedApiClient.get.mockRejectedValue({ response: { status: 429, data: { message: "Rate Limited" } } });
 
 //     const { result } = renderHook(() => useData(mockEndpoint));
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -81,7 +81,7 @@ describe("useData Hook API Tests", () => {
 //   // ✅ Test 7: Handles Canceled Requests (Unmounting)
 //   it("should prevent state updates if request is canceled", async () => {
 //     const cancelError = new CanceledError("Request canceled");
-//     mockedAxios.get.mockRejectedValue(cancelError);
+//     mockedApiClient.get.mockRejectedValue(cancelError);
 
 //     const { result, unmount } = renderHook(() => useData(mockEndpoint));
 //     unmount();
@@ -92,7 +92,7 @@ describe("useData Hook API Tests", () => {
 //   // ✅ Test 8: Handles Empty API Response
 //   it("should return an empty array when API response is empty", async () => {
 //     const mockResponse = { count: 0, results: [] };
-//     mockedAxios.get.mockResolvedValue({ data: mockResponse });
+//     mockedApiClient.get.mockResolvedValue({ data: mockResponse });
 
 //     const { result } = renderHook(() => useData(mockEndpoint));
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -105,7 +105,7 @@ describe("useData Hook API Tests", () => {
 //     const initialResponse = { count: 1, results: [{ id: 1, name: "Game One" }] };
 //     const updatedResponse = { count: 1, results: [{ id: 2, name: "Game Two" }] };
 
-//     mockedAxios.get.mockResolvedValueOnce({ data: initialResponse });
+//     mockedApiClient.get.mockResolvedValueOnce({ data: initialResponse });
 //     const { result, rerender } = renderHook(({ endpoint }) => useData(endpoint), {
 //       initialProps: { endpoint: mockEndpoint },
 //     });
@@ -113,7 +113,7 @@ describe("useData Hook API Tests", () => {
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
 //     expect(result.current.data).toEqual(initialResponse.results);
 
-//     mockedAxios.get.mockResolvedValueOnce({ data: updatedResponse });
+//     mockedApiClient.get.mockResolvedValueOnce({ data: updatedResponse });
 //     rerender({ endpoint: "/new-games" });
 
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
@@ -122,7 +122,7 @@ describe("useData Hook API Tests", () => {
 
 //   // ✅ Test 10: Handles Network Errors
 //   it("should return a general network error message when no response exists", async () => {
-//     mockedAxios.get.mockRejectedValue(new Error("Network Error"));
+//     mockedApiClient.get.mockRejectedValue(new Error("Network Error"));
 
 //     const { result } = renderHook(() => useData(mockEndpoint));
 //     await waitFor(() => expect(result.current.isLoading).toBe(false));
