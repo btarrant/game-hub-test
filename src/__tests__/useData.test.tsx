@@ -89,16 +89,16 @@ describe("useData Hook API Tests", () => {
       expect(result.current.data).toEqual([]);
     });
 
-//   // ✅ Test 8: Handles Empty API Response
-//   it("should return an empty array when API response is empty", async () => {
-//     const mockResponse = { count: 0, results: [] };
-//     mockedApiClient.get.mockResolvedValue({ data: mockResponse });
+    // ✅ Test 8: Handles Empty API Response
+    it("should return an empty array when API response is empty", async () => {
+      const mockResponse = { count: 0, results: [] };
+      mockedApiClient.get.mockResolvedValue({ data: mockResponse });
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.data).toEqual([]);
-//   });
+      expect(result.current.data).toEqual([]);
+    });
 
 //   // ✅ Test 9: Handles Dependency Changes
 //   it("should re-fetch data when dependencies change", async () => {
