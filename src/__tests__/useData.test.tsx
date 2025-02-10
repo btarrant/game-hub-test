@@ -58,15 +58,15 @@ describe("useData Hook API Tests", () => {
       expect(result.current.error).toBe("Server Error");
     });
 
-//   // ✅ Test 5: Handles 401 Unauthorized
-//   it("should handle 401 Unauthorized errors", async () => {
-//     mockedApiClient.get.mockRejectedValue({ response: { status: 401, data: { message: "Unauthorized" } } });
+    // ✅ Test 5: Handles 401 Unauthorized
+    it("should handle 401 Unauthorized errors", async () => {
+      mockedApiClient.get.mockRejectedValue({ response: { status: 401, data: { message: "Unauthorized" } } });
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.error).toBe("Unauthorized");
-//   });
+      expect(result.current.error).toBe("Unauthorized");
+    });
 
 //   // ✅ Test 6: Handles 429 Rate Limiting (without retries)
 //   it("should handle 429 Too Many Requests errors", async () => {
