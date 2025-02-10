@@ -14,7 +14,8 @@ describe("useData Hook API Tests", () => {
     beforeEach(() => {
       jest.clearAllMocks();
     });
-  
+
+    // ✅ Test 1: Successfully fetches data
     it("should receive data successfully", async () => {
         mockedApiClient.get.mockResolvedValueOnce({
           data: { results: [{ id: 1, name: "Test Game" }] }
