@@ -68,15 +68,15 @@ describe("useData Hook API Tests", () => {
       expect(result.current.error).toBe("Unauthorized");
     });
 
-//   // ✅ Test 6: Handles 429 Rate Limiting (without retries)
-//   it("should handle 429 Too Many Requests errors", async () => {
-//     mockedApiClient.get.mockRejectedValue({ response: { status: 429, data: { message: "Rate Limited" } } });
+    // ✅ Test 6: Handles 429 Rate Limiting (without retries)
+    it("should handle 429 Too Many Requests errors", async () => {
+      mockedApiClient.get.mockRejectedValue({ response: { status: 429, data: { message: "Rate Limited" } } });
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.error).toBe("Rate Limited");
-//   });
+      expect(result.current.error).toBe("Rate Limited");
+    });
 
 //   // ✅ Test 7: Handles Canceled Requests (Unmounting)
 //   it("should prevent state updates if request is canceled", async () => {
