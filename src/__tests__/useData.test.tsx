@@ -120,13 +120,13 @@ describe("useData Hook API Tests", () => {
 //     expect(result.current.data).toEqual(updatedResponse.results);
 //   });
 
-//   // ✅ Test 10: Handles Network Errors
-//   it("should return a general network error message when no response exists", async () => {
-//     mockedApiClient.get.mockRejectedValue(new Error("Network Error"));
+    // ✅ Test 10: Handles Network Errors
+    it("should return a general network error message when no response exists", async () => {
+      mockedApiClient.get.mockRejectedValue(new Error("Network Error"));
 
-//     const { result } = renderHook(() => useData(mockEndpoint));
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
+      const { result } = renderHook(() => useData(mockEndpoint));
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
 
-//     expect(result.current.error).toBe("Network Error");
-//   });
+      expect(result.current.error).toBe("Network Error");
+    });
 });
