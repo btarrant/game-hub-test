@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@testing-library/react": "^14.0.0",
+    "@types/axios": "^0.9.36",
     "axios": "^1.7.9"
   }
 }

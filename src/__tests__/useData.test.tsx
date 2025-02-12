@@ -100,25 +100,29 @@ describe("useData Hook API Tests", () => {
       expect(result.current.data).toEqual([]);
     });
 
-//   // ✅ Test 9: Handles Dependency Changes
-//   it("should re-fetch data when dependencies change", async () => {
-//     const initialResponse = { count: 1, results: [{ id: 1, name: "Game One" }] };
-//     const updatedResponse = { count: 1, results: [{ id: 2, name: "Game Two" }] };
+    // ✅ Test 9: Handles Dependency Changes
+    it("should re-fetch data when dependencies change", async () => {
+      const initialResponse = { count: 1, results: [{ id: 1, name: "Game One" }] };
+      const updatedResponse = { count: 1, results: [{ id: 2, name: "Game Two" }] };
 
-//     mockedApiClient.get.mockResolvedValueOnce({ data: initialResponse });
-//     const { result, rerender } = renderHook(({ endpoint }) => useData(endpoint), {
-//       initialProps: { endpoint: mockEndpoint },
-//     });
+      mockedApiClient.get.mockResolvedValueOnce({ data: initialResponse });
+      const { result, rerender } = renderHook(({ endpoint }) => useData(endpoint), {
+        initialProps: { endpoint: mockEndpoint },
+      });
 
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
-//     expect(result.current.data).toEqual(initialResponse.results);
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+      expect(result.current.data).toEqual(initialResponse.results);
 
-//     mockedApiClient.get.mockResolvedValueOnce({ data: updatedResponse });
-//     rerender({ endpoint: "/new-games" });
+      mockedApiClient.get.mockClear();
+      mockedApiClient.get.mockResolvedValueOnce({ data: updatedResponse });
+      rerender({ endpoint: "/new-games" });
 
-//     await waitFor(() => expect(result.current.isLoading).toBe(false));
-//     expect(result.current.data).toEqual(updatedResponse.results);
-//   });
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+
+      console.log(mockedApiClient.get.mock.calls.length);
+
+      expect(result.current.data).toEqual(updatedResponse.results);
+    });
 
     // ✅ Test 10: Handles Network Errors
     it("should return a general network error message when no response exists", async () => {
