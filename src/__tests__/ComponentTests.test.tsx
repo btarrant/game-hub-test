@@ -98,8 +98,11 @@ describe("Component Rendering & Behavior", () => {
 
   // ✅ Test 8: 
   test("Dark mode toggle works correctly", () => {
-    const toggleButton = screen.getByRole("checkbox");
+    render(<ColorModeSwitch />);
+  
+    const toggleButton = screen.getByRole("switch", { hidden: true }); // Ensure hidden elements are included
     fireEvent.click(toggleButton);
+
     expect(document.body).toHaveClass("dark-mode");
   });
 });
