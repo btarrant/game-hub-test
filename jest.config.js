@@ -14,7 +14,7 @@ module.exports = {
     moduleNameMapper: {
       '^react$': '<rootDir>/node_modules/react',
       '^react-dom$': '<rootDir>/node_modules/react-dom',
-      "\\.(jpg|jpeg|png|gif|webp|svg)$": "/Users/bt-home/Projects/game-hub-tests/src/__tests__/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|webp|svg)$": "<rootDir>/src/__tests__/__mocks__/fileMock.js",
     },
   };
   
